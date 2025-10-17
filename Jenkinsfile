@@ -6,7 +6,12 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Riteshtorne/SampleJAVA.git'
+                // Use credentials and specify branch
+                git(
+                    url: 'https://github.com/Riteshtorne/SampleJAVA.git',
+                    credentialsId: 'Github',  // GitHub username + PAT
+                    branch: 'main'
+                )
             }
         }
         stage('Build Docker Image') {
